@@ -1,0 +1,156 @@
+.signupform{
+    font-family: 'Inter';
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    margin-bottom: 200px;
+}
+.signupform-header {
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.signupform-header span {
+    font-size: 32px;
+    font-weight: 600;
+}
+.ph--arrow-right {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='m221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    cursor: pointer;
+}
+.ph--arrow-left {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    cursor: pointer;
+}
+.form-s1{
+    font-size: 24px;
+    text-align: left;
+}
+.email-enter-wrapper {
+    margin-bottom: 30px;
+}
+.email-enter-wrapper div {
+    margin: 10px 30px;
+}
+.email-enter-wrapper div input {
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border-color: #000000;
+}
+.account-type-wrapper select {
+    border-radius: 30px;
+    font-size: 20px;
+    margin-left: 30px;
+    width: 200px;
+    padding: 5px 10px;
+}
+.continue-btn {
+    text-align: right;
+    margin-top: 50px;
+}
+.continue-btn button {
+    font-size: 20px;
+    border-radius: 30px;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-style: none;
+}
+
+.form-s2 {
+    text-align: left;
+}
+.form-s2 .input-code {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.form-s2 div input {
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border-color: #000000;
+}
+
+.form-s2 .inform1-s2 {
+    font-size: 24px;
+}
+.form-s2 .inform2-s2 {
+    font-size: 18px;
+}
+.form-s3 {
+    text-align: left;
+    font-weight: 400;
+}
+.form-s3 .inform-s3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.form-s3 .form-s3-row{
+    display: flex;
+    font-size: 20px;
+}
+.form-s3 .form-s3-row div{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+.form-s3 .form-s3-row div input {
+    border-top: #FFFFFF;
+    border-right: #FFFFFF;
+    border-left: #FFFFFF;
+    width: 100%;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    outline: none;
+}
+
+.form-s4 {
+    text-align: left;
+    font-size: 24px;
+}
+.inform-s4 {
+    margin-bottom: 100px;
+}
+
+.continue-btn a {
+    font-size: 20px;
+    border-radius: 30px;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-style: none;
+    text-decoration: none;
+}

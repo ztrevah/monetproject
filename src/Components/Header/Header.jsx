@@ -1,44 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import logo from "../assets/media/shoplogo.png";
 import { LoginForm } from "../LoginForm/LoginForm";
+import { Link } from "react-router-dom";
 
-// function gotoHome() {
-//     location.href="index.html";
-// }
 
-class Navbar extends React.Component {
-    constructor(){
-        super();
-        this.state = {isLogin: false};
+function Navbar() {
+    const [signinPopUp,setSigninPopup] = useState(false);
+    const openSigninPopup = () => {
+        setSigninPopup(true);
     }
-    render() {
-        return (
-            <div className="header_bar1">
-                <img className="header_logo" src={logo} alt="Shop logo" />
-                <nav className="header_navbar">
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="product.html">Products</a></li>
-                    </ul>
-                </nav>
-                <div className="search-bar">
-                    <form id="searchform" action="product.html">
-                        <div className="search-bar1">
-                            <span className="material-symbols-outlined">search</span>
-                            <div className="search-inputdiv">
-                                <input className="search-input" type="search" placeholder="Search" />
-                            </div>
-                            <span className="gg--close-o"></span>
+    return (
+        <div className="header_bar1">
+            <Link to="/" className="header_logo_wrapper"><img className="header_logo" src={logo} alt="Shop logo" /></Link>
+            <nav className="header_navbar">
+                <ul>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/products">Products</Link></li>
+                </ul>
+            </nav>
+            <div className="search-bar">
+                <form id="searchform" action="product.html">
+                    <div className="search-bar1">
+                        <span className="material-symbols-outlined">search</span>
+                        <div className="search-inputdiv">
+                            <input className="search-input" type="search" placeholder="Search" />
                         </div>
-                    </form>
-                </div>
-                <div id="customer_area">
-                    <button className="signin_button">Sign in</button>
-                </div>
+                    </div>
+                </form>
             </div>
-        );
-    }
+            <div id="customer_area">
+                <button className="signin_button" onClick={openSigninPopup}>Sign in</button>
+            </div>
+            <LoginForm trigger={signinPopUp} setTrigger={setSigninPopup} />
+        </div>
+        
+    );
 }
 const lovemessages = ["They say when you meet the love of your life, time stops, and that's true.",
                     "If love is blind, why is lingerie so popular?",
@@ -77,7 +74,6 @@ const Header = () => {
             <header>
                 <Navbar />
                 <SloganBar />
-                <LoginForm />
             </header>
         </div>
     );

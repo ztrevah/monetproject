@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../Components/Header/Header';
 
-
-const About = () => {
+const ForgotPassword = () => {
   return (
     <div>
       <Header />
@@ -10,4 +9,4 @@ const About = () => {
   )
 }
 
-export default About;
+export default ForgotPassword;
