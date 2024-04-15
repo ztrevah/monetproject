@@ -22,12 +22,12 @@ const Footer = () => {
             <div className="instagram">
                 <span className="mdi--instagram"></span>
                 <span>Instagram: </span>
-                <a href='https://www.instagram.com/monet.giftbox/' target='_blank'>@monet.giftbox</a>
+                <a href='https://www.instagram.com/monet.giftbox/' target='_blank' rel="noopener noreferrer">@monet.giftbox</a>
             </div>
             <div className="facebook">
               <span className="ic--baseline-facebook"></span>
               <span>Facebook: </span>
-              <a href='https://www.facebook.com/harlinguy' target='_blank'>@monet.giftbox</a>
+              <a href='https://www.facebook.com/harlinguy' target='_blank' rel="noopener noreferrer">@monet.giftbox</a>
             </div>
           </div>
         </div>
