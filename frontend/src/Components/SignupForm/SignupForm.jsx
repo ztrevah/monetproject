@@ -1,48 +1,53 @@
-import React, { useState } from 'react'
-import "./SignupForm.css"
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import "./SignupForm.css";
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Step1 = () => {
-    const [accType,setAccType] = useState("Customer");
-    const [email,setEmail] = useState("");
     const accTypes = ["Customer","Employee","Manager"];
+    const [inputs,setInputs] = useState({email: "",accountType: "Customer"});
+    const [error,setError] = useState("");
+    const navigate = useNavigate();
+    const handleChange = e => {
+        setInputs(values => ({...values, [e.target.name]: e.target.value}));
+        
+    };
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try{
+            const res = await axios.post("http://localhost:9090/backend/auth/signups1",inputs);
+            console.log(res);
+            navigate("/signup/step2");
+        } catch(err) {
+            console.log(err);
+            setError(err.response.data);
+        }
+        
+    };
+    
     return (
         <form className="form-s1">
             <div className="email-enter-wrapper">
                 <label htmlFor="email-enter">Enter your email address:</label> <br/>
                 <div>
-                    <input type="email" id="email-enter" placeholder="abc@xyz.mnp" value={email} onChange={(event)=> {setEmail(event.target.value)}} />
+                    <input type="email" name="email" id="email-enter" placeholder="abc@xyz.mnp" onChange={handleChange} />
+                    <br/>
+                    <span style={{color: "red"}}>{error}</span>
                 </div>
             </div>
             <div className="account-type-wrapper">
                 <label htmlFor="account-type">Account for:</label> 
-                <select id="account-type" className="account-type" value={accType} onChange={(event)=> {setAccType(event.target.value)}}>
-                    {accTypes.map((t) => <option value={t}>{t}</option>)}
+                <select id="account-type" className="account-type" name="accountType" onChange={handleChange}>
+                    {accTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
             </div>
             <div className="continue-btn">
-                <button className="submit-email-loginform" type="submit">Continue</button>
+                <button className="submit-email-loginform" type="submit" onClick={handleSubmit}>Continue</button>
             </div>
         </form>
     );
 }
 const Step2 = () => {
-    const [code,setCode] = useState("");
-    return (
-        <form className="form-s2">
-            <span className="inform1-s2">We have sent verification code to your email address. Enter the code to continue:</span>
-            <div className="input-code">
-                <input type="text" id="verification-code" value={code} onChange={(event) => {setCode(event.target.value)}} />
-                <span></span>
-            </div>
-            <span className="inform2-s2">The verification code will expire in <span style={{color:"#CD1010"}}>2 minutes.</span></span>
-            <div className="continue-btn">
-                <button className="submit-code-loginform" type="submit">Continue</button>
-            </div>
-        </form>
-    );
-}
-const Step3 = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [firstName,setFirstName] = useState("");
@@ -51,60 +56,74 @@ const Step3 = () => {
     const [gender,setGender] = useState("");
     const [address,setAddress] = useState("");
     const [phone,setPhone] = useState("");
+    const [code,setCode] = useState("");
     return (
         <form className="form-s3">
             <div className="inform-s3">
-                <span>Your email has been verified. Please complete your information below: </span>
+                <span>We have sent verification code to your email address. Enter the code and fill in your information to create account:</span>
+            </div>
+            <div className="form-s3-row1">
+                <div className="verification-code-field">
+                    <label htmlFor="code" className="form-s3-label">Verification code: {"(*)"}</label> <br/>
+                    <div>
+                        <input type="text" id="code" value={code} onChange={(event) => {setCode(event.target.value)}} />
+                        <div className="resend-code">
+                            <span className="mdi--refresh"></span>
+                            <span>Resend code</span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <div className="form-s3-row">
                 <div className="email-field">
-                    <label htmlFor="email">Email address: {"(*)"}</label> <br/>
-                    <input type="text" id="email" value={email} onChange={(event) => {setEmail(event.target.value)}} />
+                    <label htmlFor="email" className="form-s3-label">Email address: {"(*)"}</label> 
+                    <input type="email" id="email" value={email} onChange={(event) => {setEmail(event.target.value)}} />
                 </div>
                 <div className="password-field">
-                    <label htmlFor="password">Password: {"(*)"}</label> <br/>
-                    <input type="text" id="password" value={password} onChange={(event) => {setPassword(event.target.value)}} />
+                    <label htmlFor="password" className="form-s3-label">Password: {"(*)"}</label> 
+                    <input type="password" id="password" value={password} onChange={(event) => {setPassword(event.target.value)}} />
                 </div>
             </div>
             <div className="form-s3-row">
                 <div className="firstname-field">
-                    <label htmlFor="firstname">First Name: {"(*)"}</label> <br/>
+                    <label htmlFor="firstname" className="form-s3-label">First Name: {"(*)"}</label> 
                     <input type="text" id="firstname" value={firstName} onChange={(event) => {setFirstName(event.target.value)}} />
                 </div>
                 <div className="surname-field">
-                    <label htmlFor="surname">Surname:</label> <br/>
+                    <label htmlFor="surname" className="form-s3-label">Surname:</label> 
                     <input type="text" id="surname" value={surname} onChange={(event) => {setSurname(event.target.value)}} />
                 </div>
             </div>
             <div className="form-s3-row">
                 <div className="dob-field">
-                    <label htmlFor="dob">Date of birth:</label> <br/>
+                    <label htmlFor="dob" className="form-s3-label">Date of birth:</label> 
                     <input type="text" id="dob" value={dob} onChange={(event) => {setDob(event.target.value)}} />
                 </div>
                 <div className="gender-field">
-                    <label htmlFor="gender">Gender:</label> <br/>
+                    <label htmlFor="gender" className="form-s3-label">Gender:</label> 
                     <input type="text" id="gender" value={gender} onChange={(event) => {setGender(event.target.value)}} />
                 </div>
             </div>
             <div className="form-s3-row">
                 <div className="address-field">
-                    <label htmlFor="address">Address:</label> <br/>
+                    <label htmlFor="address" className="form-s3-label">Address:</label> 
                     <input type="text" id="address" value={address} onChange={(event) => {setAddress(event.target.value)}} />
                 </div>
                 <div className="phone-field"> 
-                    <label htmlFor="phone">Phone number: {"(*)"}</label> <br/>
+                    <label htmlFor="phone" className="form-s3-label">Phone number: {"(*)"}</label> 
                     <input type="text" id="phone" value={phone} onChange={(event) => {setPhone(event.target.value)}} />
                 </div>
             </div>
             <div className="continue-btn">
-                <button className="submit-info-loginform" type="submit">Submit</button>
+                <button className="submit-info-loginform" type="submit">Create account</button>
             </div>
             
             
         </form>
     );
 }
-const Step4 = (accountType) => {
+const Step3 = (accountType) => {
     if(true) {
         return (
             <div className="form-s4">
@@ -130,21 +149,15 @@ const Step4 = (accountType) => {
     }
     
 }
-const SignupForm = () => {
-    const [step,setStep] = useState(1);
+
+const SignupForm = (props) => {
     return (
         <div className="signupform">
             <div className="signupform-header">
-                <span className="ph--arrow-left" onClick={() => {setStep((step === 1 ) ? 1 : (step-1));
-                                                                }}>
-                </span>
                 <span>Create new account</span>
-                <span className="ph--arrow-right" onClick={() => {setStep((step === 4 ) ? 4 : (step+1));
-                                                                }}>
-                </span>
             </div>
             <div className="signupform-content">
-                {(step === 1) ? <Step1/> : ( (step === 2) ? <Step2/> : ((step === 3) ? <Step3/> : <Step4/>) )}
+                {(props.step === 1) ? <Step1/> : ( (props.step === 2) ? <Step2/> : <Step3/> )}
             </div>
         </div>
     )

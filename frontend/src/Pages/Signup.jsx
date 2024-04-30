@@ -3,12 +3,12 @@ import Header from '../Components/Header/Header';
 import SignupForm from '../Components/SignupForm/SignupForm';
 import Footer from '../Components/Footer/Footer';
 
-const Signup = () => {
+const Signup = (props) => {
   return (
     <>
       <Header />
       <main>
-        <SignupForm />
+        <SignupForm step={props.step}/>
       </main>
       <Footer />
     </>

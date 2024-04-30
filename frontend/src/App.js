@@ -24,8 +24,24 @@ const router = createBrowserRouter([
     element: <ForgotPassword />
   },
   {
+    path: "/signup/step1",
+    element: <Signup step={1} />
+  },
+  {
     path: "/signup",
-    element: <Signup />
+    element: <Signup step={1} />
+  },
+  {
+    path: "/signup/step2",
+    element: <Signup step={2} />
+  },
+  {
+    path: "/signup/step3",
+    element: <Signup step={3} />
+  },
+  {
+    path: "/signup/step4",
+    element: <Signup step={4} />
   }
 ])
 

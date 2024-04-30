@@ -1,10 +1,15 @@
 import React from 'react';
 import Header from '../Components/Header/Header';
+import Footer from '../Components/Footer/Footer';
 
 export const Purchase = () => {
   return (
-    <div>
+    <>
       <Header />
-    </div>
+      <main>
+        
+      </main>
+      <Footer />
+    </>
   )
 }

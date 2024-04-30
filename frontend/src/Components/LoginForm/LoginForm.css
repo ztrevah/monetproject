@@ -14,6 +14,7 @@
     background-size: cover;
     background-color: gray;
     font-family: 'Inter';
+    z-index: 1;
 }
 .close-btn {
     text-align: right;
@@ -42,7 +43,7 @@
     padding: 20px 20px;
 }
 .form-element {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .form-element1 input, .form-element2 input {
     width: 100%;
@@ -59,7 +60,13 @@
     margin-right: 10px;
 }
 .form-element4 {
+    align-content: center;
     text-align: center;
+}
+.form-element4 span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #CD1010;
 }
 .form-element4 button {
     border-radius: 20px;
@@ -69,6 +76,7 @@
     font-size: 20px;
     background-color: #C8A1BF;
     cursor: pointer;
+    margin-top: 10px
 }
 .optional-login{
     margin-top: 20px;
@@ -110,4 +118,5 @@
     position: fixed;
     background-color: #e3e3e3;
     opacity: 0.5;
+    z-index: 1;
 }

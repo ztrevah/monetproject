@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import logo from "../assets/media/shoplogo.png";
 import { LoginForm } from "../LoginForm/LoginForm";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
+import avatar from "../assets/media/avataricon.png";
 
 function Navbar() {
     const [signinPopUp,setSigninPopup] = useState(false);
     const openSigninPopup = () => {
         setSigninPopup(true);
     }
+    const {currentUser,logout} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        logout();
+        navigate(0);
+    };
     return (
         <div className="header_bar1">
             <Link to="/" className="header_logo_wrapper"><img className="header_logo" src={logo} alt="Shop logo" /></Link>
@@ -30,7 +37,23 @@ function Navbar() {
                 </form>
             </div>
             <div id="customer_area">
-                <button className="signin_button" onClick={openSigninPopup}>Sign in</button>
+                {(currentUser === null) ? 
+                <button className="signin_button" onClick={openSigninPopup}>Sign in</button> 
+                :
+                <div>
+                    <img src={avatar} className="avatar" alt="User avatar" />
+                    <ul className="dropdown">
+                        <li className="account-brief-info">
+                            <span style={{fontWeight: "600",fontSize: "24px"}}>{currentUser.firstname + " " + (currentUser.surname || "")}</span> <br/>
+                            <span style={{fontSize: "16px"}}>{currentUser.type}</span>
+                        </li>
+                        <li className="dropdown-content"><Link to="/profile">Profile</Link></li>
+                        <li className="dropdown-content"><Link to="/profile">Cart</Link></li>
+                        <li className="dropdown-content"><Link to="/trackingorder">Your order</Link></li>
+                        <li onClick={handleLogout} style={{cursor: "pointer",fontSize: "20px"}} className="dropdown-content">Logout</li>
+
+                    </ul>
+                </div>}
             </div>
             <LoginForm trigger={signinPopUp} setTrigger={setSigninPopup} />
         </div>
