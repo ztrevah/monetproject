@@ -3,8 +3,9 @@ import Home from './Pages/Home.jsx';
 import About from './Pages/About.jsx';
 import ForgotPassword from './Pages/ForgotPassword.jsx';
 import Signup from './Pages/Signup.jsx';
-import ProductList from './Pages/ProductList.jsx';
+import Products from './Pages/Products.jsx';
 import "./App.css"
+import Product from './Pages/Product.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/products",
-    element: <ProductList />
+    element: <Products />
   },
   {
     path: "/forgotpassword",
@@ -40,8 +41,8 @@ const router = createBrowserRouter([
     element: <Signup step={3} />
   },
   {
-    path: "/signup/step4",
-    element: <Signup step={4} />
+    path: "products/:productid",
+    element: <Product />
   }
 ])
 

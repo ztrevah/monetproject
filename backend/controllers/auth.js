@@ -11,18 +11,18 @@ export const register_step1 = (req,res) => {
         if(err) return res.json(err);
         if(data.length) return res.status(409).json("User already exists!");
 
-        var salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync("12345",salt);
+        // var salt = bcrypt.genSaltSync(10);
+        // var hash = bcrypt.hashSync("12345",salt);
         
-        const q1 = "insert into accounts (email,type,password,firstname,phone) values (?) ";
-        const values =[req.body.email,req.body.accountType,hash,"Chien","0943394091"]
-        db.query(q1,[values],(err,data) => {
-            if(err) return res.json(err);
-            return res.status(200).json("Verification code created and sent");
-        })
+        // const q1 = "insert into accounts (email,type,password,firstname,phone) values (?) ";
+        // const values =[req.body.email,req.body.accountType,hash,"Chien","0943394091"]
+        // db.query(q1,[values],(err,data) => {
+        //     if(err) return res.json(err);
+        //     return res.status(200).json("Verification code created and sent");
+        // })
     })
 }
-// Check verification code
+// Check verification code & insert new account
 export const register_step2 = (req,res) => {
     // check existing user
     const q = "select * from accounts where email = ?";
@@ -33,22 +33,8 @@ export const register_step2 = (req,res) => {
         // hash the password
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(req.body.password,salt);
-    })
-} 
-// Insert new account data
-export const register_step3 = (req,res) => {
-    // check existing user
-    const q = "select * from accounts where email = ?";
-    db.query(q,[req.body.email], (err,data) => {
-        if(err) return res.json(err);
-        if(data.length) return res.status(409).json("User already exists!");
-        
-        // hash the password
-        var salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync(req.body.password,salt);
-    })
-} 
-
+    });
+};
 
 export const login = (req,res) => {
     const q = "select * from accounts where email = ?";

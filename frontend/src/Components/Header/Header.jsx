@@ -23,7 +23,7 @@ function Navbar() {
             <nav className="header_navbar">
                 <ul>
                     <li><Link to="/about">About</Link></li>
-                    <li><Link to="/products">Products</Link></li>
+                    <li><Link reloadDocument to="/products">Products</Link></li>
                 </ul>
             </nav>
             <div className="search-bar">
