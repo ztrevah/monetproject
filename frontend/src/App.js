@@ -43,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "products/:productid",
     element: <Product />
+  },
+  {
+    path: "/error",
+    element: <h1>There is something wrong!</h1>
   }
 ])
 

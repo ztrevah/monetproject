@@ -62,6 +62,10 @@
     padding: 5px 10px;
     border-color: #000000;
 }
+.requestError {
+    font-size: 20px;
+    color: #CD1010;
+}
 .account-type-wrapper select {
     border-radius: 30px;
     font-size: 20px;
@@ -83,30 +87,6 @@
     border-style: none;
 }
 
-.form-s2 {
-    text-align: left;
-}
-.form-s2 .input-code {
-    margin-top: 20px;
-    margin-bottom: 80px;
-    margin-right: 30px;
-    margin-left: 30px;
-}
-.form-s2 div input {
-    font-size: 20px;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border-color: #000000;
-}
-
-.form-s2 .inform1-s2 {
-    font-size: 24px;
-}
-.form-s2 .inform2-s2 {
-    font-size: 18px;
-}
 .form-s3 {
     text-align: left;
     font-weight: 400;
@@ -131,6 +111,9 @@
     padding: 10px 20px;
     display: inline-block;
 }
+.form-s3 .form-s3-row div .error {
+    padding: 0px 0px;
+}
 .verification-code-field{
     padding: 10px 20px;
     font-size: 20px;
@@ -152,6 +135,7 @@
     padding-top: 10px;
     padding-bottom: 5px;
     outline: none;
+    font-family: "Inter";
 }
 .verification-code-field div .resend-code {
     text-align: center;
@@ -167,6 +151,10 @@
 .resend-code:hover span {
     font-weight: 600;
 }
+.form-s3-row1 .error {
+    padding: 0px 20px;
+    color: red;
+}
 .form-s3 .form-s3-row div input {
     border-top: #FFFFFF;
     border-right: #FFFFFF;
@@ -176,6 +164,11 @@
     padding-top: 10px;
     padding-bottom: 5px;
     outline: none;
+    font-family: "Inter";
+}
+.form-s3 .form-s3-row div .error .inputError {
+    color: red;
+    font-size: 14px;
 }
 
 .form-s4 {
@@ -209,4 +202,12 @@
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     padding-bottom: 5px;
-  }
+}
+.ep--warning-filled {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath fill='red' d='M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m0 192a58.43 58.43 0 0 0-58.24 63.744l23.36 256.384a35.072 35.072 0 0 0 69.76 0l23.296-256.384A58.43 58.43 0 0 0 512 256m0 512a51.2 51.2 0 1 0 0-102.4a51.2 51.2 0 0 0 0 102.4'/%3E%3C/svg%3E");
+}

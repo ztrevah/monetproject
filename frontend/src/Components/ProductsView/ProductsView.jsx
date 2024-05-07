@@ -71,7 +71,7 @@ const ProductsView = (props) => {
                         <div className="category-filter">
                             <p>Category</p>
                             <div className="cate-wrapper">
-                                <input type="radio" id="cate0" name="category" value="All" defaultChecked={props.category === "All"} onChange={handleChange}></input>
+                                <input type="radio" id="cate0" name="category" value="All" defaultChecked={props.category === "All" || props.category === null} onChange={handleChange}></input>
                                 <label htmlFor="cate0">All categories</label>
                             </div>
                             <div className="cate-wrapper">
@@ -94,7 +94,7 @@ const ProductsView = (props) => {
                                     <input type="number" id="minprice" name="minprice" placeholder="min" defaultValue={(props.minprice || null)} onChange={handleChange}></input>
                                 </div>
                                 <div className="minus-icon-wrapper">
-                                    <span class="typcn--minus"></span>
+                                    <span className="typcn--minus"></span>
                                 </div>
                                 <div className="maxprice-wrapper">
                                     <input type="number" id="maxprice" name="maxprice" placeholder="max" defaultValue={(props.maxprice || null)} onChange={handleChange}></input>
