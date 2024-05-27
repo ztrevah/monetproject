@@ -99,7 +99,7 @@ export const login = (req,res) => {
         if(!isPasswordCorrect) return res.status(400).json("Wrong username or pasword!");
 
         let jwtSecretKey = process.env.JWT_SECRET_KEY;
-        const token = jwt.sign({email: data[0].email,accountType: data[0].type},jwtSecretKey);
+        const token = jwt.sign({email: data[0].email,password: data[0].password,accountType: data[0].type},jwtSecretKey);
         const {password, address, phone, ...other} = data[0];
 
         res.cookie("access_token",token, {
@@ -113,4 +113,40 @@ export const logout = (req,res) => {
     res.clearCookie("access_token",{
         secure:true
     }).status(200).json("User has been logged out.")
+}
+
+export const verify = (req,res) => {
+    const usertoken = req.cookies.access_token;
+    const userverifiedinfo = {
+        email: null,
+        accountType: null,
+    };
+    if(usertoken) {
+        const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
+        console.log(userinfo);
+        if(userinfo.email && userinfo.password && userinfo.accountType) {
+            const q = "select * from accounts where email = ? and password = ? and type = ?";
+            db.query(q,[userinfo.email,userinfo.password,userinfo.accountType],(err,data) => {
+                if(err) {
+                    return res.clearCookie("access_token",{
+                        secure:true
+                    }).json(err);
+                }
+                if(data.length === 0) {
+                    return res.clearCookie("access_token",{
+                        secure:true
+                    }).status(401).json("Invalid token");
+                } 
+                const {password, ...other} = data[0];
+                return res.status(200).json(other);
+            });
+        }
+        else {
+            return res.clearCookie("access_token",{
+                secure:true
+            }).status(401).json("Invalid token");
+        }
+    }
+    else return res.status(401).json("No token sent");
+    
 }

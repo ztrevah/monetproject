@@ -30,16 +30,21 @@ export const getProductDetails = (req,res) => {
     const product = {};
     db.query(q1,[req.body.productid],(err,data) => {
         if(err) return res.json(err);
+        if(data.length === 0) return res.status(409).json("No product matched with the productid is found");
         for(let x in data[0]) {
             product[x] = data[0][x];
         }
+        
+        const q2 = "select * from productimages where productid = ?";
+        db.query(q2,[req.body.productid],(err,data) => {
+            if(err) return res.json(err);
+            product.imgurl = [];
+            data.map((d) => {
+                product.imgurl.push(d.imgurl);
+            });
+            return res.status(200).json(product);
+        });
+        
     });
-    const q2 = "select * from productimages where productid = ?";
-    db.query(q2,[req.body.productid],(err,data) => {
-        if(err) return res.json(err);
-        for(let d in data) {
-            product[imgurl].push(d["imgurl"]);
-        }
-    });
-    return res.status(200).json(product);
+    
 };
