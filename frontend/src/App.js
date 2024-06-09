@@ -6,6 +6,9 @@ import Signup from './Pages/Signup.jsx';
 import Products from './Pages/Products.jsx';
 import "./App.css"
 import Product from './Pages/Product.jsx';
+import Cart from './Pages/Cart.jsx';
+import Purchase from './Pages/Purchase.jsx';
+import Orders from './Pages/Orders.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
   {
     path: "products/:productid",
     element: <Product />
+  },
+  {
+    path: "/cart",
+    element: <Cart />
+  },
+  {
+    path: "/purchase",
+    element: <Purchase />
+  },
+  {
+    path: "/orders",
+    element: <Orders />
   },
   {
     path: "/error",

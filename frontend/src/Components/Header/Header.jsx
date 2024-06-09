@@ -15,6 +15,7 @@ function Navbar() {
     const navigate = useNavigate();
     const handleLogout = () => {
         logout();
+        navigate("/");
         navigate(0);
     };
     return (
@@ -48,8 +49,8 @@ function Navbar() {
                             <span style={{fontSize: "16px"}}>{currentUser.type}</span>
                         </li>
                         <li className="dropdown-content"><Link to="/profile">Profile</Link></li>
-                        <li className="dropdown-content"><Link to="/profile">Cart</Link></li>
-                        <li className="dropdown-content"><Link to="/trackingorder">Your order</Link></li>
+                        <li className="dropdown-content"><Link to="/cart">Cart</Link></li>
+                        <li className="dropdown-content"><Link to="/orders">Your order</Link></li>
                         <li onClick={handleLogout} style={{cursor: "pointer",fontSize: "20px"}} className="dropdown-content">Logout</li>
 
                     </ul>

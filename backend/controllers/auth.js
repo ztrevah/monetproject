@@ -99,8 +99,8 @@ export const login = (req,res) => {
         if(!isPasswordCorrect) return res.status(400).json("Wrong username or pasword!");
 
         let jwtSecretKey = process.env.JWT_SECRET_KEY;
-        const token = jwt.sign({email: data[0].email,password: data[0].password,accountType: data[0].type},jwtSecretKey);
-        const {password, address, phone, ...other} = data[0];
+        const token = jwt.sign({uid: data[0].uid,email: data[0].email,password: data[0].password,accountType: data[0].type},jwtSecretKey);
+        const {password, ...other} = data[0];
 
         res.cookie("access_token",token, {
             httpOnly: true,secure: true
@@ -117,14 +117,9 @@ export const logout = (req,res) => {
 
 export const verify = (req,res) => {
     const usertoken = req.cookies.access_token;
-    const userverifiedinfo = {
-        email: null,
-        accountType: null,
-    };
     if(usertoken) {
         const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
-        console.log(userinfo);
-        if(userinfo.email && userinfo.password && userinfo.accountType) {
+        if(userinfo.uid && userinfo.email && userinfo.password && userinfo.accountType) {
             const q = "select * from accounts where email = ? and password = ? and type = ?";
             db.query(q,[userinfo.email,userinfo.password,userinfo.accountType],(err,data) => {
                 if(err) {
@@ -148,5 +143,4 @@ export const verify = (req,res) => {
         }
     }
     else return res.status(401).json("No token sent");
-    
 }

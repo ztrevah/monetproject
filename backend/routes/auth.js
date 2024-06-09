@@ -8,6 +8,6 @@ router.post("/signups2",register_step2);
 router.post("/checkmailsignup",checkSignupEmail);
 router.post("/login",login);
 router.post("/logout",logout);
-router.get("/verify",verify);
+router.post("/verify",verify);
 
 export default router

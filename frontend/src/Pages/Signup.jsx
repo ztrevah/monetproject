@@ -9,10 +9,10 @@ const Signup = (props) => {
   const {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    if(currentUser !== null) {
+    if(currentUser?.uid) {
       navigate("/error");
     }
-  });
+  },[navigate,currentUser]);
   return (
     <>
       <Header />

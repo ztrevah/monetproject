@@ -88,7 +88,6 @@
 }
 .productinfo-wrapper .quantity .quantity-input{
     display: flex;
-    margin-bottom: 10px;
 }
 .productinfo-wrapper .quantity .quantity-input .inputarea{ 
     border-style: solid;
@@ -107,7 +106,7 @@
     outline: none;
     font-size: 20px;
 }
-.productinfo-wrapper .quantity .quantity-left{
+.productinfo-wrapper .errormsg{
     font-size: 20px;
     font-style: italic;
     padding-left: 10px;
@@ -169,6 +168,81 @@
     height: 20px;
  }
  
+
+.addtocart-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    font-family: 'Inter';
+    background-color: #FFFFFF;
+    height: 200px;
+    width: 300px;
+    display: block;
+    z-index: 1;
+}
+.addtocart-popup .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.addtocart-popup .header .checkicon-wrapper {
+    display: flex;
+    align-items: center;
+}
+.addtocart-popup .additem-details {
+    display: flex;
+    width: 100%;
+    padding: 10px 10px;
+}
+.addtocart-popup .additem-details .additem-img {
+    width: 25%;
+}
+.addtocart-popup .additem-details img {
+    width: 100%;
+}
+.addtocart-popup .additem-details .additem-other {
+    padding: 3px 10px;
+    font-size: 16px;
+}
+.addtocart-popup .additem-details .additem-name {
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+.addtocart-popup .additem-details .additem-quantity {
+    padding-bottom: 10px;
+}
+.addtocart-popup .additem-details .additem-price {
+    color: #CD1010;
+}
+.addtocart-popup .viewcartbtn-wrapper {
+    text-align: center;
+}
+.addtocart-popup .viewcartbtn-wrapper button{
+    border-style: solid;
+    border-color: #A2A2A2;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.addtocart-popup .viewcartbtn-wrapper button:hover{
+    border-color: #000000;
+}
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: #e3e3e3;
+    opacity: 0.5;
+    z-index: 1;
+}
+
 .bytesize--cart {
     display: inline-block;
     width: 24px;
@@ -233,4 +307,26 @@
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
+}
+.line-md--circle-twotone-to-confirm-circle-twotone-transition {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='%230FA958' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='9' fill='%230FA958' fill-opacity='0.3'/%3E%3Cpath fill='none' stroke-dasharray='14' stroke-dashoffset='14' d='M8 12L11 15L16 10'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.2s' values='14;0'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+.mdi--close {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    cursor: pointer;
 }

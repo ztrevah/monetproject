@@ -1,18 +1,19 @@
 import React from 'react';
 import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
-import CartView from '../Components/CartView/CartView';
+import OrdersView from '../Components/OrdersView/OrdersView';
 
-const Cart = () => {
+
+const About = () => {
   return (
     <>
       <Header />
       <main>
-        <CartView />
+        <OrdersView />
       </main>
       <Footer />
     </>
   )
 }
 
-export default Cart;
+export default About;
