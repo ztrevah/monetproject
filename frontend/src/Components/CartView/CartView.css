@@ -21,6 +21,27 @@
     display: block;
     width: 65%;
 }
+.emptycart {
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.emptycart .bytesize--cart {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M6 6h24l-3 13H9m18 4H10L5 2H2'/%3E%3Ccircle cx='25' cy='27' r='2'/%3E%3Ccircle cx='12' cy='27' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
 .cartitemdiv-wrapper {
     box-sizing: border-box;
 }
@@ -37,7 +58,12 @@
     display : flex;
     align-items: center;
     justify-content: center;
-    
+}
+.cartitems .cartitemdiv .cartitem-checkbox input[type="checkbox"] {
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    accent-color: black;
 }
 .cartitems .cartitemdiv .cartitem-img {
     width: 20%;
@@ -111,6 +137,8 @@
 .cartview-summary .summary-totalprice {
     padding: 30px 0px;
     font-size: 22px;
+    display: flex;
+    justify-content: space-between;
 }
 .cartview-summary .makepaymentbtn {
 }

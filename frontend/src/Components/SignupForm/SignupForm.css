@@ -1,10 +1,12 @@
-.signupform{
-    font-family: 'Inter';
+.signupform {
     text-align: center;
     margin-top: 50px;
     margin-left: 25vw;
     margin-right: 25vw;
     margin-bottom: 200px;
+}
+.signupform * { 
+    font-family: 'Inter';
 }
 .signupform-header {
     height: 32px;

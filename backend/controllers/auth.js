@@ -120,8 +120,8 @@ export const verify = (req,res) => {
     if(usertoken) {
         const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
         if(userinfo.uid && userinfo.email && userinfo.password && userinfo.accountType) {
-            const q = "select * from accounts where email = ? and password = ? and type = ?";
-            db.query(q,[userinfo.email,userinfo.password,userinfo.accountType],(err,data) => {
+            const q = "select * from accounts where uid = ? and email = ? and password = ? and type = ?";
+            db.query(q,[userinfo.uid,userinfo.email,userinfo.password,userinfo.accountType],(err,data) => {
                 if(err) {
                     return res.clearCookie("access_token",{
                         secure:true

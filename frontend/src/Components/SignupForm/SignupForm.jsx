@@ -80,7 +80,7 @@ const Step2 = (props) => {
             }
             checkEmail();
         }
-    },[email]);
+    },[email,navigate,input]);
     
     const [requestError,setRequestError] = useState("");
     const [inputError,setInputError] = useState({

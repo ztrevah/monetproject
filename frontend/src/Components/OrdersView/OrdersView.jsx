@@ -146,12 +146,16 @@ const OrdersView = () => {
     const navigate = useNavigate();
     const [ordersList,setOrdersList] = useState([]);
     const [searchInputs,setSearchInputs] = useState({});
+    const [emptyOrdersListDescription,setEmptyOrdersListDescription] = useState("You haven't made any orders yet.");
+    const [orderSortOption,setOrderSortOption] = useState("Date: New - Old");
     useEffect(()=> {
         if(currentUser) {
             const getOrderLists = async () => {
                 try {
                     const res = await axios.post("http://localhost:9090/backend/order/getcustomerorder",{customerid: currentUser.uid},{withCredentials: true});
                     setOrdersList(res.data);
+                    setOrderSortOption("Date: New - Old");
+                    if(res.data.length === 0) setEmptyOrdersListDescription("You haven't made any orders yet.");
                 } catch(err) {
                     console.log(err);
                 }
@@ -164,6 +168,7 @@ const OrdersView = () => {
     },[currentUser,navigate]);
 
     const sortOrders = (e) => {
+        setOrderSortOption(e.target.value);
         if(e.target.value === "Date: New - Old") {
             const tmp = ordersList.toSorted((a,b) => new Date(b.createdtime) - new Date(a.createdtime));
             setOrdersList(tmp);
@@ -190,6 +195,11 @@ const OrdersView = () => {
             try {
                 const res = await axios.post("http://localhost:9090/backend/order/searchorder",searchInputs,{withCredentials: true});
                 setOrdersList(res.data);
+                setOrderSortOption("Date: New - Old");
+                if(res.data.length === 0) {
+                    if(searchInputs.orderid) setEmptyOrdersListDescription("No order matched found.");
+                    else setEmptyOrdersListDescription("You haven't made any orders yet.");
+                }
             } catch(err) {
                 console.log(err);
             }
@@ -209,7 +219,7 @@ const OrdersView = () => {
                 </div>
                 <div className="orders-sortoptions">
                     <label htmlFor="orders-sortoptions">Sort by: </label> 
-                    <select id="orders-sortoptions" onChange={sortOrders}>
+                    <select id="orders-sortoptions" value={orderSortOption} onChange={sortOrders}>
                         <option value="Date: New - Old">Date: Newest - Oldest</option>
                         <option value="Date: Old - New">Date: Oldest - Newest</option>
                         <option value="Total price: Low - High">Total price: Low - High</option>
@@ -218,6 +228,14 @@ const OrdersView = () => {
                 </div>
             </div>
             <div className="ordersview-orderslist">
+                {ordersList.length === 0 ? (
+                    <div className="emptyorderslist">
+                        <div><span className="fa-regular--sad-tear"></span></div>
+                        <br />
+                        <div><span>{emptyOrdersListDescription}</span></div>
+                        
+                    </div>
+                ) : ""} 
                 {ordersList?.map((order,index) => {
                     return (
                     <div className="orderdetail-wrapper" key={index}>

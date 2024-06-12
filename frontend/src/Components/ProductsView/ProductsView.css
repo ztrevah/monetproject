@@ -4,6 +4,9 @@
     margin-top: 30px;
     margin-bottom: 100px;
 }
+.productsview * {
+    font-family: "Inter";
+}
 h2 {
     font-size: 30px;
 }

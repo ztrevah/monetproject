@@ -2,6 +2,9 @@ footer {
     margin-top: auto;
     font-family: 'Inter';
 }
+.footer * {
+    font-family: 'Inter';
+}
 .twemoji--flag-vietnam {
     display: inline-block;
     width: 32px;

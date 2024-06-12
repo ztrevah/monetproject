@@ -7,8 +7,8 @@ export const createorder = (req,res) => {
     if(usertoken) {
         const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
         if(userinfo.uid && userinfo.email && userinfo.password && userinfo.accountType && userinfo.accountType === "Customer") {
-            const q = "select * from accounts where email = ? and password = ?";
-            db.query(q,[userinfo.email,userinfo.password],(err,data) => {
+            const q = "select * from accounts where uid = ? and email = ? and password = ? and type = 'Customer'";
+            db.query(q,[userinfo.uid,userinfo.email,userinfo.password],(err,data) => {
                 if(err) {
                     return res.clearCookie("access_token",{
                         secure:true
@@ -68,8 +68,8 @@ export const getCustomerOrder = (req,res) => {
     if(usertoken) {
         const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
         if(userinfo.uid && userinfo.email && userinfo.password && userinfo.accountType && userinfo.accountType === "Customer") {
-            const q = "select * from accounts where email = ? and password = ?";
-            db.query(q,[userinfo.email,userinfo.password],(err,data) => {
+            const q = "select * from accounts where uid = ? and email = ? and password = ? and type = 'Customer'";
+            db.query(q,[userinfo.uid,userinfo.email,userinfo.password],(err,data) => {
                 if(err) {
                     return res.clearCookie("access_token",{
                         secure:true
@@ -120,8 +120,8 @@ export const searchorder = (req,res) => {
     if(usertoken) {
         const userinfo = jwt.verify(usertoken,process.env.JWT_SECRET_KEY);
         if(userinfo.uid && userinfo.email && userinfo.password && userinfo.accountType && userinfo.accountType === "Customer") {
-            const q = "select * from accounts where email = ? and password = ?";
-            db.query(q,[userinfo.email,userinfo.password],(err,data) => {
+            const q = "select * from accounts where uid = ? and email = ? and password = ? and type = 'Customer'";
+            db.query(q,[userinfo.uid,userinfo.email,userinfo.password],(err,data) => {
                 if(err) {
                     return res.clearCookie("access_token",{
                         secure:true

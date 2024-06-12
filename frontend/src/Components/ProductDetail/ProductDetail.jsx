@@ -118,7 +118,7 @@ const ProductDetail = () => {
     if(currentUser) {
       if(!error) {
         try {
-          await axios.post("http://localhost:9090/backend/cart/add",{customerid: currentUser.uid, productid: productDetails.productid, quantity: numberPurchaseItems});
+          await axios.post("http://localhost:9090/backend/cart/add",{productid: productDetails.productid, quantity: numberPurchaseItems});
           setAdded(true);
           setAddItem({
             img: productDetails.imgurl?.at(0), 
@@ -192,7 +192,7 @@ const ProductDetail = () => {
               <button>Buy now!</button>
             </div>
             <div className="cartbutton-wrapper" onClick={addToCart}>
-              <button><span className="bytesize--cart"></span><br/>Add to cart</button>
+              <button><span className="mi--shopping-cart-add"></span><br/>Add to cart</button>
             </div>
           </div>
           <div className="description">

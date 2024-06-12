@@ -11,7 +11,7 @@
     text-align: center;
     font-size: 32px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .purchaseview .checkout-content {
     display: flex;
@@ -40,13 +40,14 @@
     width: 48%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .purchaseview .checkout-content .checkout-form .client-info .client-name .firstname label {
-    width: 43%;
+    width: 45%;
     font-size: 20px;
 }
 .purchaseview .checkout-content .checkout-form .client-info .client-name .firstname input {
-    width: 57%;
+    width: 45%;
     font-size: 18px;
     padding: 5px 10px;
 }
@@ -56,11 +57,11 @@
     align-items: center;
 }
 .purchaseview .checkout-content .checkout-form .client-info .client-name .surname label {
-    width: 46%;
+    width: 45%;
     font-size: 20px;
 }
 .purchaseview .checkout-content .checkout-form .client-info .client-name .surname input {
-    width: 60%;
+    width: 45%;
     font-size: 18px;
     padding: 5px 10px;
 }
@@ -152,6 +153,17 @@
     font-size: 20px;
     padding: 0px 50px;
 }
+.purchaseview .checkout-content .checkout-form .purchase-errormessage {
+    font-size: 20px;
+    color: red;
+    display: flex;
+    align-items: center;
+}
+.purchaseview .checkout-content .checkout-form .purchase-errormessage .ep--warning-filled {
+    height: 20px;
+    width: 20px;
+}
+
 .purchaseview .checkout-content .checkout-summary{
     display: block;
     width: 45%;
@@ -159,7 +171,7 @@
 .purchaseview .checkout-content .checkout-summary .checkout-summary-title {
     font-size: 30px;
     font-weight: 600;
-    padding: 15px 0px;
+    padding: 10px 0px;
     border-bottom: 1px solid #000000;
 }
 .purchaseview .checkout-content .checkout-summary .order-detail {
